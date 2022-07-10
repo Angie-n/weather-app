@@ -10,8 +10,5 @@ module.exports = {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
   },
-  optimization: {
-    runtimeChunk: 'single',
-  },
   devtool: 'eval',
 };
