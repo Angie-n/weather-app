@@ -1,0 +1,372 @@
+@font-face {
+    font-family: merriweather-sans;
+    src: url("./assets/fonts/MerriweatherSans-Regular.ttf");
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --blue-gradient: linear-gradient(45deg, rgb(102, 196, 236), rgb(80, 178, 205), rgb(21, 145, 187), rgb(6, 80, 117));
+}
+
+body {
+    color: white;
+    font-family: merriweather-sans, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    background-color: rgb(36, 32, 32);
+}
+
+ul {
+    list-style: none;
+}
+
+h1 {
+    z-index: 1;
+    font-size: 5em;
+}
+
+h2 {
+    display: none;
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.6em;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    color: white;
+    z-index: 1;
+}
+
+button:hover {
+    color:rgb(208, 207, 207);
+}
+
+#current-info > button i {
+    font-size: 1.8em;
+    margin: 5px;
+}
+
+#search-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#unit-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#bookmark-btn {
+    display: flex;
+    align-items: center;
+}
+
+#bookmark-btn:hover {
+    color: rgb(102, 196, 236);
+}
+
+#bookmark-btn i {
+    margin-right: 10px;
+    font-size: 1.5em;
+}
+
+#other-cities {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    background-color: inherit;
+    height: 100%;
+    width: max(400px, 20%);
+    border-left: 1px solid rgb(47, 47, 47);
+}
+
+#other-cities > * {
+    margin-left: 15px;
+}
+
+#other-cities h2 {
+    display: block;
+}
+
+#exit-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+}
+
+#searchbar {
+    display: flex;
+    margin-top: 50px;
+}
+
+#searchbar input {
+    width: 80%;
+}
+
+#searchbar button {
+    margin-left: 15px;
+    background-color: white;
+    border: 1px solid gray;
+    color: black;
+    padding: 5px 10px 5px 10px;
+}
+
+#searchbar button:hover {
+    background-color: rgb(208, 208, 208);
+}
+
+#search-error-msg {
+    font-size: 1.2em;
+    color: rgb(208, 207, 207);
+    font-style: italic;
+    height: 0;
+    overflow: visible;
+}
+
+#saved-cities-header {
+    display: flex;
+    margin: 30px 15px 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#saved-cities-header i {
+    font-size: 1.4em;
+}
+
+#saved-cities div {
+    position: relative;
+    border: 1px solid rgb(63, 65, 64);
+    height: 50px;
+    width: 80%;
+    border-radius: 10px;
+    background: white;
+    color: black;
+    font-size: 1.6em;
+    margin-top: 20px;
+}
+
+#saved-cities li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: inherit;
+    width: 100%;
+    height: inherit;
+    border-radius: inherit;
+}
+
+.delete-city-btn {
+    display: none;
+    color: rgb(205, 2, 2);
+    position: absolute;
+    top: 3px;
+    right: -50px;
+    font-size: 2.5em;
+}
+
+.delete-city-btn i:hover {
+    color: red;
+}
+
+#saved-cities li:hover {
+    background: var(--blue-gradient);
+    color: white;
+}
+
+#black-screen {
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 100%;
+}
+
+#location-info {
+    display: flex;
+    align-items: center;
+}
+
+#location-info p {
+    margin-left: 5px;
+    font-size: 1.6em;
+}
+
+#current-info {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 350px;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#current-temp {
+    font-size: 6em;
+}
+
+#current-temp-info {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+}
+
+#high-low {
+    font-size: 2em;
+    margin-left: 10px;
+}
+
+#current-nontemp-info {
+    z-index: 1;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+#current-nontemp-info div {
+    display: flex;
+    font-size: 1.2em;
+}
+
+#current-nontemp-info div div {
+    display: flex;
+    flex-direction: column;
+}
+
+#current-nontemp-info i {
+    font-size: 2.7em;
+    margin-right: 5px;
+}
+
+#weather-forecasts {
+    margin-top: 10px;
+}
+
+#forecast-today {
+    display: flex;
+    overflow: scroll;
+    width: 100vw;
+}
+
+#forecast-today::before, #forecast-today::after {
+    content: "";
+    margin: auto;
+}
+
+.today-divs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    min-width: clamp(100px, 20%, 200px);
+    border-radius: 5%;
+    min-height: 300px;
+    border: 1px solid white;
+} 
+
+.today-divs p:nth-of-type(1) {
+    font-size: 2em;
+}
+
+.today-divs p:nth-of-type(2) {
+    font-size: 1.5em;
+}
+
+#forecast-today div img {
+    width: 80%;
+}
+
+#current-time {
+    background: var(--blue-gradient);
+}
+
+#forecast-week {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 1.5em;
+    margin: 20px 0 20px 0;
+}
+
+#forecast-week h3 {
+    width: 120px;
+}
+
+#forecast-week > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    border-top: 1px solid white;
+    max-width: 1800px;
+}
+
+#forecast-week div:nth-child(1) {
+    border-top: 0px;
+}
+
+#forecast-week img {
+    height: 50px;
+}
+
+#forecast-week div div {
+    display: flex;
+    align-items: center;
+}
+
+.week-weather-forecast {
+    width: 100px;
+}
+
+.week-high-low {
+    justify-content: flex-end;
+    min-width: 5%;
+}
+
+.week-high-low p:nth-child(2) {
+    margin-left: 15px;
+    color: rgb(208, 207, 207);
+}
+
+@media only screen and (max-width: 700px) {
+    #other-cities {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    h1 {
+        font-size: 14vw;
+    }
+
+    h3 {
+        font-size: 5vw;
+    }
+
+    .week-weather-forecast {
+        width: auto;
+    }
+
+    .week-weather-forecast p {
+        display: none;
+    }
+}
