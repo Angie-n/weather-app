@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js" defer></script>
+    <script src="https://kit.fontawesome.com/bc1bc2b6f5.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../src/style.css">
+    <title>Weather App</title>
+</head>
+<body>
+    <header id="current-info">
+        <div id="black-screen"></div>
+        <button id="unit-btn"><i class="fa-solid fa-arrow-right-arrow-left"></i></button>
+        <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <div id="location-info">
+            <h1></h1>
+            <p></p>
+        </div>
+        <div id="current-temp-info">
+            <p id="current-temp"></p>
+            <div id="high-low">
+                <p id="high-temp"></p>
+                <p id="low-temp"></p>
+            </div>
+        </div>
+        <div id="current-nontemp-info">
+            <div><i class="fa-solid fa-temperature-half"></i><div id="feels-like"><p>Feels Like</p><p></p></div></div>
+            <div><i class="fa-solid fa-wind"></i><div id="wind-speed"><p>Wind Speed</p><p></p></div></div>
+            <div><i class="fa-solid fa-droplet"></i><div id="humidity"><p>Humidity</p><p></p></div></div>
+        </div>
+    </header>
+    <div id="weather-forecasts">
+        <h2>Today's Forecasts</h2>
+        <div id="forecast-today"></div>
+        <h2>Upcoming Week</h2>
+        <div id="forecast-week"></div>
+    </div>
+    <div id="other-cities">
+        <button id="exit-btn">X</button>
+        <div id="searchbar">
+            <input type="search" placeholder="Search for cities...">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <p id="search-error-msg"></p>
+        <div id="saved-cities-header"><h2>Saved Cities</h2><button id="edit-saved-cities-btn"><i class="fa-solid fa-pen"></i></button></div>
+        <button id="bookmark-btn"><i class="fa-regular fa-bookmark"></i><p>Bookmark current city</p></button>
+        <ul id="saved-cities">
+        </ul>
+    </div>
+</body>
+</html>
