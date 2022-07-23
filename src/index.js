@@ -1,3 +1,4 @@
+import "./style.css";
 import * as APIModule from "./modules/API.js";
 import * as displayModule from "./modules/display.js";
 import * as localStorageModule from "./modules/localStorage.js";
@@ -32,27 +33,6 @@ const editSavedCities = () => {
     return {toggleDeleteBtn};
 };
 document.getElementById("edit-saved-cities-btn").onclick = () => editSavedCities().toggleDeleteBtn();
-
-//readd events from saved cities in storage
-if(document.getElementsByClassName("delete-city-btn").length !== 0) {
-    if(document.getElementsByClassName("delete-city-btn")[0].style.display === "block") editSavedCities().toggleDeleteBtn();
-    let savedCities = [...document.getElementById("saved-cities").getElementsByTagName("div")];
-    savedCities.forEach(c => {
-        c.getElementsByTagName("li")[0].onclick = () => {
-            if(c.textContent !== document.getElementsByTagName("h1")[0].textContent) getAndDisplay(c.textContent);
-        }
-        let deleteBtn = c.getElementsByTagName("button")[0];
-        deleteBtn.onclick = () => {
-            c.remove();
-            if(c.textContent === document.getElementsByTagName("h1")[0].textContent) {
-                document.getElementById("bookmark-btn").getElementsByTagName("i")[0].classList.remove("fa-solid");
-                document.getElementById("bookmark-btn").getElementsByTagName("i")[0].classList.add("fa-regular");
-                document.getElementById("bookmark-btn").getElementsByTagName("p")[0].textContent = "Bookmark the current city";
-            }
-            localStorageModule.storage().populateStorage();
-        }
-    });
-}
 
 let search = (() => {
     let searchDiv = document.getElementById("searchbar");
@@ -129,4 +109,25 @@ let bookmark = (() => {
     }
     bookmarkBtn.addEventListener("click", () => toggleBookmark());
 })();
+
+//readd events from saved cities in storage
+if(document.getElementsByClassName("delete-city-btn").length !== 0) {
+    if(document.getElementsByClassName("delete-city-btn")[0].style.display === "block") editSavedCities().toggleDeleteBtn();
+    let savedCities = [...document.getElementById("saved-cities").getElementsByTagName("div")];
+    savedCities.forEach(c => {
+        c.getElementsByTagName("li")[0].onclick = () => {
+            if(c.textContent !== document.getElementsByTagName("h1")[0].textContent) getAndDisplay(c.textContent);
+        }
+        let deleteBtn = c.getElementsByTagName("button")[0];
+        deleteBtn.onclick = () => {
+            c.remove();
+            if(c.textContent === document.getElementsByTagName("h1")[0].textContent) {
+                document.getElementById("bookmark-btn").getElementsByTagName("i")[0].classList.remove("fa-solid");
+                document.getElementById("bookmark-btn").getElementsByTagName("i")[0].classList.add("fa-regular");
+                document.getElementById("bookmark-btn").getElementsByTagName("p")[0].textContent = "Bookmark the current city";
+            }
+            localStorageModule.storage().populateStorage();
+        }
+    });
+}
 
